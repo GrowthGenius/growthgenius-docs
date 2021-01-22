@@ -33,7 +33,7 @@ Additionally, every request EXCEPT the User API should include the user_id as an
 
 A user is a member of a team on growthgenius.
 
-## Get All Contacts
+## Get All Users
 
 ### HTTP Request
 
@@ -49,7 +49,7 @@ This endpoint retrieves all users who have enabled integrations
     {
       id: 1,
       team_id: 2,
-      created_at: "2019-03-21T16:11:00.024-04:00"
+      created_at: "2019-03-21T16:11:00.024-04:00",
       email: "dev@growthgenius.com"
       email_bcc: "tim@cnn.com"
       first_name: "Okay"
@@ -57,9 +57,21 @@ This endpoint retrieves all users who have enabled integrations
       last_name: "Senior"
       reporting_email: "reporting-dev@growthgenius.com"
       roles: ["superadmin", "admin"]
-
-    }
+    },
+    {
+      id: 1,
+      team_id: 2,
+      created_at: "2019-03-21T16:11:00.024-04:00",
+      email: "dev@growthgenius.com"
+      email_bcc: "tim@cnn.com"
+      first_name: "Okay"
+      full_name: "Okay Senior"
+      last_name: "Senior"
+      reporting_email: "reporting-dev@growthgenius.com"
+      roles: ["superadmin", "admin"]
+    },
   ]
+}
 ```
 
 # Enrichment API
@@ -293,8 +305,6 @@ email: "sjobs@apple.com" (see response JSON for additional fields)
   }
 }
 ```
-
-|
 
 ## Update a Contact
 
