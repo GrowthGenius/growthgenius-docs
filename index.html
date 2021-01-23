@@ -318,7 +318,7 @@
             <a href="#user-api" class="toc-h1 toc-link" data-title="User API">User API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-contacts" class="toc-h2 toc-link" data-title="Get All Contacts">Get All Contacts</a>
+                    <a href="#get-all-users" class="toc-h2 toc-link" data-title="Get All Users">Get All Users</a>
                   </li>
               </ul>
           </li>
@@ -404,7 +404,7 @@
 <p>Additionally, every request EXCEPT the User API should include the user_id as an additional query parameter.</p>
 <h1 id='user-api'>User API</h1>
 <p>A user is a member of a team on growthgenius.</p>
-<h2 id='get-all-contacts'>Get All Contacts</h2><h3 id='http-request'>HTTP Request</h3>
+<h2 id='get-all-users'>Get All Users</h2><h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://api.growthgenius.com/integrations/v1/users</code></p>
 
 <p>This endpoint retrieves all users who have enabled integrations</p>
@@ -417,7 +417,7 @@
     </span><span class="p">{</span><span class="w">
       </span><span class="err">id:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="err">team_id:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="err">created_at:</span><span class="w"> </span><span class="s2">"2019-03-21T16:11:00.024-04:00"</span><span class="w">
+      </span><span class="err">created_at:</span><span class="w"> </span><span class="s2">"2019-03-21T16:11:00.024-04:00"</span><span class="p">,</span><span class="w">
       </span><span class="err">email:</span><span class="w"> </span><span class="s2">"dev@growthgenius.com"</span><span class="w">
       </span><span class="err">email_bcc:</span><span class="w"> </span><span class="s2">"tim@cnn.com"</span><span class="w">
       </span><span class="err">first_name:</span><span class="w"> </span><span class="s2">"Okay"</span><span class="w">
@@ -425,9 +425,21 @@
       </span><span class="err">last_name:</span><span class="w"> </span><span class="s2">"Senior"</span><span class="w">
       </span><span class="err">reporting_email:</span><span class="w"> </span><span class="s2">"reporting-dev@growthgenius.com"</span><span class="w">
       </span><span class="err">roles:</span><span class="w"> </span><span class="p">[</span><span class="s2">"superadmin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">]</span><span class="w">
-
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="err">id:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="err">team_id:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="err">created_at:</span><span class="w"> </span><span class="s2">"2019-03-21T16:11:00.024-04:00"</span><span class="p">,</span><span class="w">
+      </span><span class="err">email:</span><span class="w"> </span><span class="s2">"dev@growthgenius.com"</span><span class="w">
+      </span><span class="err">email_bcc:</span><span class="w"> </span><span class="s2">"tim@cnn.com"</span><span class="w">
+      </span><span class="err">first_name:</span><span class="w"> </span><span class="s2">"Okay"</span><span class="w">
+      </span><span class="err">full_name:</span><span class="w"> </span><span class="s2">"Okay Senior"</span><span class="w">
+      </span><span class="err">last_name:</span><span class="w"> </span><span class="s2">"Senior"</span><span class="w">
+      </span><span class="err">reporting_email:</span><span class="w"> </span><span class="s2">"reporting-dev@growthgenius.com"</span><span class="w">
+      </span><span class="err">roles:</span><span class="w"> </span><span class="p">[</span><span class="s2">"superadmin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='enrichment-api'>Enrichment API</h1>
 <p>The Enrichment API lets you look up person and company data based on an email or domain. For example, you could retrieve a person’s name, location and social handles from an email. Or you could lookup a company’s location, headcount or logo based on their domain name.</p>
 
@@ -499,20 +511,20 @@
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"annual_revenue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"annual_revenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$100 millon+"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"bad_data_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Melbourne"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Zealand"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Water St."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"company_linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/anz"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Anz"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_name_informal"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Inc."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_name_informal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contact_account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cold"</span><span class="w"> </span><span class="p">},</span><span class="w">
     </span><span class="nl">"contact_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"corporate_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Zealand"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"corporate_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:06:25.730-05:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"custom1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"custom2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -523,40 +535,40 @@
     </span><span class="nl">"custom7"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"custom8"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"custom9"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tony.barkley@anz.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjobs@apple.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email_confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"employee_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tony"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tony Barkley"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"home_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valid"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"employee_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10,000+"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/steve"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"home_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1102755</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banking"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computers"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banking, finance, retail banking, commercial banking, credit risk, credit, financial risk, loans, credit analysis, relationship management, risk management, core banking, portfolio management, financial analysis, business relationship management, internet banking, mobile banking"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"label_names"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barkley"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/tony-barkley-92824584"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"linkedin_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tony-barkley-92824584"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/steve-jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkedin_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steve-jobs"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NaN"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tony Barkley"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"other_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"other_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"prospect_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">236811124</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bay Of Plenty"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Think differently"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replied"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ongoing"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Relationship Associate"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salesforce, stripe, intercom"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/steve"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"unstructured_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:07:20.529-05:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"upload_identifier"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anz.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"work_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"work_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
@@ -630,7 +642,7 @@ email: &quot;sjobs@apple.com&quot; (see response JSON for additional fields)
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"annual_revenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$1-$10 million"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"annual_revenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$100 millon+"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"bad_data_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Water St."</span><span class="p">,</span><span class="w">
@@ -639,7 +651,7 @@ email: &quot;sjobs@apple.com&quot; (see response JSON for additional fields)
     </span><span class="nl">"company_linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/anz"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Inc."</span><span class="p">,</span><span class="w">
     </span><span class="nl">"company_name_informal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"contact_account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cold"</span><span class="w"> </span><span class="p">},</span><span class="w">
     </span><span class="nl">"contact_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w">
     </span><span class="nl">"corporate_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777-889-3825"</span><span class="p">,</span><span class="w">
@@ -657,9 +669,9 @@ email: &quot;sjobs@apple.com&quot; (see response JSON for additional fields)
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjobs@apple.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email_confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valid"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"employee_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-50"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/tony"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tony"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"employee_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10,000+"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/steve"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"first_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"home_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
@@ -667,36 +679,30 @@ email: &quot;sjobs@apple.com&quot; (see response JSON for additional fields)
     </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computers"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banking, finance, retail banking, commercial banking, credit risk, credit, financial risk, loans, credit analysis, relationship management, risk management, core banking, portfolio management, financial analysis, business relationship management, internet banking, mobile banking"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"label_names"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barkley"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/tony-barkley-92824584"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"linkedin_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tony-barkley-92824584"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/steve-jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkedin_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steve-jobs"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"lists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NaN"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tony Barkley"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"other_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"prospect_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">236811124</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A great firm to work for, lovely all round"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Think differently"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"stage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replied"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bay Of Plenty"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ongoing"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Relationship Associate"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/tony"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salesforce, stripe, intercom"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/steve"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"unstructured_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:07:20.529-05:00"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"upload_identifier"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anz.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"work_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<table><thead>
-<tr>
-</tr>
-</thead><tbody>
-</tbody></table>
-<h2 id='update-a-contact'>Update a Contact</h2><h3 id='http-request-4'>HTTP Request</h3>
+</span></code></pre></div><h2 id='update-a-contact'>Update a Contact</h2><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>PATCH https://api.growthgenius.com/integrations/v1/contacts/:id</code></p>
 
 <p>This endpoint updates a contact.</p>
@@ -806,68 +812,66 @@ to: <datetime>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"annual_revenue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"bad_data_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/anz"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Inc."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_name_informal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"contact_account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cold"</span><span class="w"> </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"contact_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"corporate_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:06:25.730-05:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom3"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom5"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom6"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom7"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom8"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"custom9"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjobs@apple.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email_confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"employee_count"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tony"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"first_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"home_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1102755</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computers"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banking, finance, retail banking, commercial banking, credit risk, credit, financial risk, loans, credit analysis, relationship management, risk management, core banking, portfolio management, financial analysis, business relationship management, internet banking, mobile banking"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"label_names"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barkley"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/tony-barkley-92824584"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"linkedin_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tony-barkley-92824584"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"lists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NaN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tony Barkley"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"other_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"prospect_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">236811124</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"stage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bay Of Plenty"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ongoing"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Relationship Associate"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"unstructured_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:07:20.529-05:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"upload_identifier"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"anz.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"work_phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"annual_revenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$100 millon+"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"bad_data_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Water St."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/anz"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Inc."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_name_informal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"company_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contact_account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cold"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"contact_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"corporate_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:06:25.730-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom3"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom5"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom6"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom7"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom8"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"custom9"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjobs@apple.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valid"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"employee_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10,000+"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/steve"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"first_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"home_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1102755</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computers"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banking, finance, retail banking, commercial banking, credit risk, credit, financial risk, loans, credit analysis, relationship management, risk management, core banking, portfolio management, financial analysis, business relationship management, internet banking, mobile banking"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"label_names"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/steve-jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkedin_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steve-jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"other_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"prospect_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">236811124</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Think differently"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"stage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replied"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ongoing"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salesforce, stripe, intercom"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/steve"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"unstructured_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:07:20.529-05:00"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"upload_identifier"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"work_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='get-a-specific-contact'>Get a Specific Contact</h2><h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://api.growthgenius.com/integrations/v1/contacts/:id</code></p>
