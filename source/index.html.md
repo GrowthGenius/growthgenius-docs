@@ -27,50 +27,36 @@ growthgenius expects for the API key to be included in all API requests to the s
 
 `Authorization: YOUR API KEY HERE`
 
-Additionally, every request EXCEPT the User API should include the user_id as an additional query parameter.
+Additionally, every request should include the user_id as an additional query parameter.
 
 # User API
 
 A user is a member of a team on growthgenius.
 
-## Get All Users
+## Get User Information
 
 ### HTTP Request
 
-`GET https://api.growthgenius.com/integrations/v1/users`
+`GET https://api.growthgenius.com/integrations/v1/users/`
 
-This endpoint retrieves all users who have enabled integrations
+This endpoint returns the information of the user corresponding to the provided user_id.
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "users": [
-    {
-      id: 1,
-      team_id: 2,
-      created_at: "2019-03-21T16:11:00.024-04:00",
-      email: "dev@growthgenius.com"
-      email_bcc: "tim@cnn.com"
-      first_name: "Okay"
-      full_name: "Okay Senior"
-      last_name: "Senior"
-      reporting_email: "reporting-dev@growthgenius.com"
-      roles: ["superadmin", "admin"]
-    },
-    {
-      id: 1,
-      team_id: 2,
-      created_at: "2019-03-21T16:11:00.024-04:00",
-      email: "dev@growthgenius.com"
-      email_bcc: "tim@cnn.com"
-      first_name: "Okay"
-      full_name: "Okay Senior"
-      last_name: "Senior"
-      reporting_email: "reporting-dev@growthgenius.com"
-      roles: ["superadmin", "admin"]
-    },
-  ]
+  "user": {
+    id: 1,
+    team_id: 2,
+    created_at: "2019-03-21T16:11:00.024-04:00",
+    email: "dev@growthgenius.com"
+    email_bcc: "tim@cnn.com"
+    first_name: "Okay"
+    full_name: "Okay Senior"
+    last_name: "Senior"
+    reporting_email: "reporting-dev@growthgenius.com"
+    roles: ["superadmin", "admin"]
+  }
 }
 ```
 
