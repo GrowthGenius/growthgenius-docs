@@ -205,14 +205,6 @@ let contacts = api.contacts.get();
 | email        | Email                                                                                                                                                                                                                                                           | elon@tesla.com             |
 | website_url  | The organization website Apollo can use to enrich data for you. DO NOT pass in personal social media URLs such as "http://www.linkedin.com/profile_url", or your data will be incorrectly enriched. This argument will be ignored if you pass in a valid email. | "http://www.tesla.com"     |
 
-# Discovery API
-
-A Contact is a person your team has explicitly added to your database. It can be from prospected from GrowthGenius, manually added by your team, or created by the API.
-
-# Prospector API
-
-A Contact is a person your team has explicitly added to your database. It can be from prospected from GrowthGenius, manually added by your team, or created by the API.
-
 # Contact API
 
 A Contact is a person your team has explicitly added to your database. It can be from prospected from GrowthGenius, manually added by your team, or created by the API.
