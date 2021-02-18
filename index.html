@@ -312,6 +312,32 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#data-sets" class="toc-h1 toc-link" data-title="Data Sets">Data Sets</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-dataset" class="toc-h2 toc-link" data-title="API Dataset">API Dataset</a>
+                  </li>
+                  <li>
+                    <a href="#linkedin-data" class="toc-h2 toc-link" data-title="LinkedIn Data">LinkedIn Data</a>
+                  </li>
+                  <li>
+                    <a href="#email-data" class="toc-h2 toc-link" data-title="Email Data">Email Data</a>
+                  </li>
+                  <li>
+                    <a href="#street-address-data" class="toc-h2 toc-link" data-title="Street Address Data">Street Address Data</a>
+                  </li>
+                  <li>
+                    <a href="#mobile-phone-data" class="toc-h2 toc-link" data-title="Mobile Phone Data">Mobile Phone Data</a>
+                  </li>
+                  <li>
+                    <a href="#phone-data" class="toc-h2 toc-link" data-title="Phone Data">Phone Data</a>
+                  </li>
+                  <li>
+                    <a href="#developer-data" class="toc-h2 toc-link" data-title="Developer Data">Developer Data</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
@@ -388,6 +414,48 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the GrowthGenius API! You can use our API to access GrowthGenius API endpoints, which can get information on various contacts, accounts, and campaigns.</p>
+<h1 id='data-sets'>Data Sets</h1><h3 id='api-dataset'>API Dataset</h3>
+<p>All Records Have -- Name + One other piece of PII</p>
+
+<p>Number of Profiles: 2,721,090,761</p>
+
+<p>Main Use Cases: Enrichment</p>
+<h3 id='linkedin-data'>LinkedIn Data</h3>
+<p>All Records Have -- Linkedin URL</p>
+
+<p>Number of Profiles: 571,536,238</p>
+
+<p>Main Use Cases: Candidate Search, Prospect Search, Custom Audiences, Career Path Prediction/Labor Force Modeling, Investment Sourcing</p>
+<h3 id='email-data'>Email Data</h3>
+<p>All Records Have -- Email</p>
+
+<p>Number of Profiles: 645,912,636</p>
+
+<p>Main Use Cases: Email Enrichment, Sales Lead Generation, Candidate Outreach</p>
+<h3 id='street-address-data'>Street Address Data</h3>
+<p>All Records Have -- Street Address</p>
+
+<p>Number of Profiles: 359,910,157</p>
+
+<p>Main Use Cases: Contact Info Enrichment, Sales and Marketing, Skiptracing, Background Checks</p>
+<h3 id='mobile-phone-data'>Mobile Phone Data</h3>
+<p>All Records Have -- Mobile Phone Number</p>
+
+<p>Number of Profiles: 253,398,383</p>
+
+<p>Main Use Cases: Direct Dial Outreach, Caller ID</p>
+<h3 id='phone-data'>Phone Data</h3>
+<p>All Records Have -- Any Phone Number</p>
+
+<p>Number of Profiles: 664,345,129</p>
+
+<p>Main Use Cases: Skiptracing, Background Checks</p>
+<h3 id='developer-data'>Developer Data</h3>
+<p>All Records Have -- Github URL</p>
+
+<p>Number of Profiles: 3,125,978</p>
+
+<p>Main Use Cases: Recruiting, Investment Sourcing</p>
 <h1 id='authentication'>Authentication</h1>
 <p>growthgenius uses API keys to allow access to the API.</p>
 
@@ -412,7 +480,7 @@
     </span><span class="err">team_id:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="err">created_at:</span><span class="w"> </span><span class="s2">"2019-03-21T16:11:00.024-04:00"</span><span class="p">,</span><span class="w">
     </span><span class="err">email:</span><span class="w"> </span><span class="s2">"dev@growthgenius.com"</span><span class="w">
-    </span><span class="err">email_bcc:</span><span class="w"> </span><span class="s2">"tim@cnn.com"</span><span class="w">
+    </span><span class="err">email_bcc:</span><span class="w"> </span><span class="s2">"dev@cnn.com"</span><span class="w">
     </span><span class="err">first_name:</span><span class="w"> </span><span class="s2">"Okay"</span><span class="w">
     </span><span class="err">full_name:</span><span class="w"> </span><span class="s2">"Okay Senior"</span><span class="w">
     </span><span class="err">last_name:</span><span class="w"> </span><span class="s2">"Senior"</span><span class="w">
@@ -426,7 +494,367 @@
 <p>Note: You’ll only be charged once per 30 day period for each unique request, so if you didn’t store the data properly or need to re-run a series of requests for any reason, those won’t count against your allotment.</p>
 <h2 id='person-api'>Person API</h2>
 <p>The Person API lets you retrieve social information associated with an email address, such as a person’s name, location and Twitter handle.</p>
-<h3 id='attributes'>Attributes</h3>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'growthgenius'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">growthgenius</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s2">"YOUR API KEY HERE"</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">company</span><span class="p">.</span><span class="nf">get</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-H</span> <span class="s2">"Cache-Control: no-cache"</span> <span class="nt">-d</span> <span class="s1">'{
+    "api_key": "YOUR API KEY HERE",
+}'</span> <span class="s2">"https://api.growthgenius.com/integrations/v1/companies/find?domain=tesla.com"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">growthgenius</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">growthgenius</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">growthgenius</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">"</span><span class="s2">YOUR API KEY HERE</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">contacts</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">contacts</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qEnOZ5Oh0poWnQ1luFBfVw_0000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will richman"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"middle_initial"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"middle_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fong"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"richman"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"birth_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1990"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"birth_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/willrichman"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"linkedin_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"willrichman"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"linkedin_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145991517"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/dewillrichman"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"facebook_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dewillrichman"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"facebook_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1089351304"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/willrichman5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"twitter_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"willrichman5"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"github_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"github_username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"work_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will@growthgenius.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+14155688415"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"computer software"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"co-founder and chief executive officer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_title_role"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_title_sub_role"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_title_levels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"owner"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cxo"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"job_company_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"growthgenius"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GrowthGenius"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"growthgenius.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-50"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_founded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"computer software"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/growthgenius"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_linkedin_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18170482"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/growthgenius"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/growthgenius"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_ticker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco, california, canada"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_metro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco, california"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"california"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_geo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.77,-122.41"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"455 market street"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suite 1670"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94105"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canada"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_company_location_continent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"north america"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_last_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"job_summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GrowthGenius helps people with data. Leverage our dataset of 1.5 billion unique person profiles as your data foundation to build products, enrich person profiles, power predictive modeling/AI, analysis, and more. We build and maintain our data from our powerful Data Union. We work with thousands of data science teams as their engineering focused data partner."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco, california, canada"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_metro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco, california"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"california"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canada"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_continent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"north america"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_street_address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_postal_code"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_geo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.77,-122.41"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"location_last_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-01"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"linkedin_connections"</span><span class="p">:</span><span class="w"> </span><span class="mi">9621</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inferred_salary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&gt;250,000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inferred_years_experience"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Interested in solving the hardest problems the enterprise is facing."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"phone_numbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"+14155688415"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"srichman@ubritishcolumbia.edu"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will@bitmaker.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"professional"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will@growthgenius.co"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"professional"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will.richman@growthgenius.co"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"professional"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will@growthgenius.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current_professional"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"srichman@growthgenius.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current_professional"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will.richman@growthgenius.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current_professional"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"possible_emails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will@datemyschool.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"professional"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"interests"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"location based services"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"social media"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"colleges"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"university students"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"consumer internet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"college campuses"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"entrepreneurship"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start ups"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"management"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"public speaking"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"strategic partnerships"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"strategy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fundraising"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"saas"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enterprise technology sales"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"social networking"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"location_names"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"san francisco, california, canada"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"albany, california, canada"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vancouver, british columbia, canada"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"regions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"california, canada"</span><span class="p">,</span><span class="w"> </span><span class="s2">"british columbia, canada"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"countries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"canada"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"street_addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"experience"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmaker"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1-10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmaker"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"founded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2013"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"computer software"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vancouver, british columbia, canada"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vancouver"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"british columbia"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"metro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vancouver, british columbia"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canada"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"continent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"north america"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1231 northwest hoyt street"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suite 202"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"97209"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"geo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45.52,-122.67"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/bitmaker"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linkedin_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3019184"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/bitmaker"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmaker.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bitmaker"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bitmaker, inc"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fuzzy_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"location_names"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-02"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-08"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"co-founder"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"co-founder"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_role"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"levels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"owner"</span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"is_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CRM for bars and restaurants. Expanded to select west coast college campuses. 800k seed. Angel Conference Presentation:"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GrowthGenius"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"size"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11-50"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"growthgenius"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"founded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"computer software"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco, california, canada"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"california"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"metro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco, california"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canada"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"continent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"north america"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"street_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"455 market street"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suite 1670"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"94105"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"geo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37.77,-122.41"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/growthgenius"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linkedin_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18170482"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/growthgenius"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/growthgenius"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"growthgenius.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"GrowthGenius"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"fuzzy_match"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"location_names"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-03"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"co-founder and chief executive officer"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"co-founder &amp;amp; ceo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"co-founder &amp; ceo"</span><span class="p">],</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sub_role"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"levels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"owner"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cxo"</span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"is_primary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GrowthGenius helps people with data. Leverage our dataset of 1.5 billion unique person profiles as your data foundation to build products, enrich person profiles, power predictive modeling/AI, analysis, and more. We build and maintain our data from our powerful Data Union. We work with thousands of data science teams as their engineering focused data partner. I consult with our engineering customers to solve data building challenges - will@growthgenius.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"education"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"school"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"university of british columbia"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post-secondary institution"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"64LkgfdwWYkCC2TjbldMDQ_0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"location"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vancouver, british columbia, canada"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vancouver"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"british columbia"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"canada"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"continent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"north america"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/school/university-of-british columbia"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/universityofbritish columbia"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/ubritish columbia"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linkedin_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19207"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubritishcolumbia.edu"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ubritishcolumbia.edu"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"university of british columbia"</span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"gpa"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"degrees"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"majors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"entrepreneurship"</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"minors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nl">"raw"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"data analytics &amp; entrepreneurship"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">", entrepreneurship"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entrepreneurship"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Entrepreneurship at University of Western british columbia"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"profiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"145991517"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/willrichman"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"willrichman"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1089351304"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/dewillrichman"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dewillrichman"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/willrichman5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"willrichman5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/will-richman-9b9a8540"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will-richman-9b9a8540"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"angellist"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"angel.co/dewillrichman"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dewillrichman"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gravatar"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gravatar.com/willrichman5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"willrichman5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"klout"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"klout.com/willrichman5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"willrichman5"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aboutme"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"about.me/will_richman"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will_richman"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"possible_profiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"angellist"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"angel.co/will-richman-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will-richman-1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/growthgenius"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"growthgenius"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"klout"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"klout.com/bitmaker_dev"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitmaker_dev"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/will-richman-4b92813b"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"will-richman-4b92813b"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/willrichman1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"willrichman1"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"certifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nl">"version_status"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"contains"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"previous_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"current_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13.0"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='attributes'>Attributes</h3>
 <p>The dot notation indicates that the property is one level deep inside a hash. No attributes are guaranteed to be present, and if we can’t find data on a specific network, then we’ll return a null value for that attribute.</p>
 
 <table><thead>
@@ -490,67 +918,102 @@
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"annual_revenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$100 millon+"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"bad_data_reason"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Water St."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"San Francisco"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/anz"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple Inc."</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_name_informal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Apple"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"contact_account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w"> </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cold"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"contact_account_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">485499</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"corporate_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777-889-3825"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:06:25.730-05:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom1"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom2"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom3"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom4"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom5"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom6"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom7"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom8"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"custom9"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sjobs@apple.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email_confidence"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email_status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valid"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"employee_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10,000+"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"facebook_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/steve"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"first_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"home_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1102755</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Computers"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banking, finance, retail banking, commercial banking, credit risk, credit, financial risk, loans, credit analysis, relationship management, risk management, core banking, portfolio management, financial analysis, business relationship management, internet banking, mobile banking"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"label_names"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jobs"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"linkedin_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/in/steve-jobs"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"linkedin_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"steve-jobs"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"lists"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"mobile_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Steve Jobs"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"other_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"prospect_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">236811124</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"seo_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Think differently"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"stage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Replied"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"California"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ongoing"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"technologies"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salesforce, stripe, intercom"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"twitter_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/steve"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"unstructured_data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-19T17:07:20.529-05:00"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"upload_identifier"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"apple.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"work_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778-889-3825"</span><span class="w">
+    </span><span class="nl">"size"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">219238</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"google"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"website"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"google.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"google"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"founded"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1998"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"size_range"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10001+"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"location"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"mountain view, california, canada"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"locality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"mountain view"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"region"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"california"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metro"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"san francisco, california"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"canada"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"continent"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"north america"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"street_address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1600 amphitheatre parkway"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"postal_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"94043"</span><span class="w">
+      </span><span class="nl">"address_line_2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"industry"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"internet"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"facebook_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"facebook.com/google"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"twitter_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"twitter.com/google"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"crunchbase_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"crunchbase.com/organization/google"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkedin_url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/google"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"linkedin_id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"linkedin.com/company/1441"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email_domains"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"google.com"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"ticker"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"GOOGL"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"public"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"profiles"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"linkedin.com/company/google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"linkedin.com/company/1441"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"facebook.com/google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"twitter.com/google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"crunchbase.com/organization/google"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"media and entertainment"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"messaging and telecommunications"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"information technology"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"search engine"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"content and publishing"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"blogging platforms"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"advertising"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"collaboration"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"google is a multinational corporation that specializes in internet-related services and products. the company’s product portfolio includes google search, which provides users with access to information online; knowledge graph that allows users to search for things, people, or places as well as builds systems recognizing speech and understanding natural language; google now, which provides information to users when they need it; product listing ads that offer product image, price, and merchant information;  adwords, an auction-based advertising program; adsense, which enables websites that are part of the google network to deliver ads; google display, a display advertising network; doubleclick ad exchange, a marketplace for the trading display ad space; and youtube that offers video, interactive, and other ad formats.  additionally, the company offers android, an open-source mobile software platform; hardware products, including chromebook, chrome, chromecast, and nexus devices; google+"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"headline"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"alternative_names"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"google inc."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google deepmind"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google inc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google, inc."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google fiber"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google, inc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google germany gmbh"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google india"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google ireland"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"alternative_domains"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"googlevideo.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google.nl"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google.pt"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gkecnapps.cn"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"youtube.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"youtu.be"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"youtubeeducation.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"gstatic.cn"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"youtubekids.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"googleadapis.com"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"affiliated_profiles"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"youtube"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-cloud"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"think-with-google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-ads-"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"googleworkspace"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-analytics"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"googlemarketingplatform"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-ad-manager"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"grow-with-google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-cloud-partners"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-for-startups"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-small-business"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"x"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-partners"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rework-with-google"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"googleplaydev"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"googleadmob"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-user-research."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"google-news-initiative"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"adometry"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.growthgenius.com/integrations/v1/companies/find?domain=tesla.com</code></p>
 <h3 id='attributes-2'>Attributes</h3>
@@ -739,8 +1202,8 @@ email: &quot;sjobs@apple.com&quot; (see response JSON for additional fields)
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contains Keywords"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"signal_field_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"q_keywords"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Zheng, CEO, Apollo"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Zheng, CEO, Apollo"</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will Richman, COO, GrowthGenius"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will Richman, COO, GrowthGenius"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"partial_results_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -933,8 +1396,8 @@ user_id: 78
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Contains Keywords"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"signal_field_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"q_keywords"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Zheng, CEO, Apollo"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tim Zheng, CEO, Apollo"</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will Richman, COO, GrowthGenius"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"display_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Will Richman, COO, GrowthGenius"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"partial_results_only"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
