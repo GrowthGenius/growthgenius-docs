@@ -318,7 +318,7 @@
             <a href="#user-api" class="toc-h1 toc-link" data-title="User API">User API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-users" class="toc-h2 toc-link" data-title="Get All Users">Get All Users</a>
+                    <a href="#get-user-information" class="toc-h2 toc-link" data-title="Get User Information">Get User Information</a>
                   </li>
               </ul>
           </li>
@@ -332,12 +332,6 @@
                     <a href="#company-api" class="toc-h2 toc-link" data-title="Company API">Company API</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#discovery-api" class="toc-h1 toc-link" data-title="Discovery API">Discovery API</a>
-          </li>
-          <li>
-            <a href="#prospector-api" class="toc-h1 toc-link" data-title="Prospector API">Prospector API</a>
           </li>
           <li>
             <a href="#contact-api" class="toc-h1 toc-link" data-title="Contact API">Contact API</a>
@@ -401,44 +395,30 @@
 
 <p><code>Authorization: YOUR API KEY HERE</code></p>
 
-<p>Additionally, every request EXCEPT the User API should include the user_id as an additional query parameter.</p>
+<p>Additionally, every request should include the user_id as an additional query parameter.</p>
 <h1 id='user-api'>User API</h1>
 <p>A user is a member of a team on growthgenius.</p>
-<h2 id='get-all-users'>Get All Users</h2><h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://api.growthgenius.com/integrations/v1/users</code></p>
+<h2 id='get-user-information'>Get User Information</h2><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.growthgenius.com/integrations/v1/users/</code></p>
 
-<p>This endpoint retrieves all users who have enabled integrations</p>
+<p>This endpoint returns the information of the user corresponding to the provided user_id.</p>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="err">id:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="err">team_id:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="err">created_at:</span><span class="w"> </span><span class="s2">"2019-03-21T16:11:00.024-04:00"</span><span class="p">,</span><span class="w">
-      </span><span class="err">email:</span><span class="w"> </span><span class="s2">"dev@growthgenius.com"</span><span class="w">
-      </span><span class="err">email_bcc:</span><span class="w"> </span><span class="s2">"tim@cnn.com"</span><span class="w">
-      </span><span class="err">first_name:</span><span class="w"> </span><span class="s2">"Okay"</span><span class="w">
-      </span><span class="err">full_name:</span><span class="w"> </span><span class="s2">"Okay Senior"</span><span class="w">
-      </span><span class="err">last_name:</span><span class="w"> </span><span class="s2">"Senior"</span><span class="w">
-      </span><span class="err">reporting_email:</span><span class="w"> </span><span class="s2">"reporting-dev@growthgenius.com"</span><span class="w">
-      </span><span class="err">roles:</span><span class="w"> </span><span class="p">[</span><span class="s2">"superadmin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="err">id:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="err">team_id:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="err">created_at:</span><span class="w"> </span><span class="s2">"2019-03-21T16:11:00.024-04:00"</span><span class="p">,</span><span class="w">
-      </span><span class="err">email:</span><span class="w"> </span><span class="s2">"dev@growthgenius.com"</span><span class="w">
-      </span><span class="err">email_bcc:</span><span class="w"> </span><span class="s2">"tim@cnn.com"</span><span class="w">
-      </span><span class="err">first_name:</span><span class="w"> </span><span class="s2">"Okay"</span><span class="w">
-      </span><span class="err">full_name:</span><span class="w"> </span><span class="s2">"Okay Senior"</span><span class="w">
-      </span><span class="err">last_name:</span><span class="w"> </span><span class="s2">"Senior"</span><span class="w">
-      </span><span class="err">reporting_email:</span><span class="w"> </span><span class="s2">"reporting-dev@growthgenius.com"</span><span class="w">
-      </span><span class="err">roles:</span><span class="w"> </span><span class="p">[</span><span class="s2">"superadmin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">id:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="err">team_id:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="err">created_at:</span><span class="w"> </span><span class="s2">"2019-03-21T16:11:00.024-04:00"</span><span class="p">,</span><span class="w">
+    </span><span class="err">email:</span><span class="w"> </span><span class="s2">"dev@growthgenius.com"</span><span class="w">
+    </span><span class="err">email_bcc:</span><span class="w"> </span><span class="s2">"tim@cnn.com"</span><span class="w">
+    </span><span class="err">first_name:</span><span class="w"> </span><span class="s2">"Okay"</span><span class="w">
+    </span><span class="err">full_name:</span><span class="w"> </span><span class="s2">"Okay Senior"</span><span class="w">
+    </span><span class="err">last_name:</span><span class="w"> </span><span class="s2">"Senior"</span><span class="w">
+    </span><span class="err">reporting_email:</span><span class="w"> </span><span class="s2">"reporting-dev@growthgenius.com"</span><span class="w">
+    </span><span class="err">roles:</span><span class="w"> </span><span class="p">[</span><span class="s2">"superadmin"</span><span class="p">,</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='enrichment-api'>Enrichment API</h1>
 <p>The Enrichment API lets you look up person and company data based on an email or domain. For example, you could retrieve a person’s name, location and social handles from an email. Or you could lookup a company’s location, headcount or logo based on their domain name.</p>
@@ -617,10 +597,6 @@
 <td>&quot;http://www.tesla.com&quot;</td>
 </tr>
 </tbody></table>
-<h1 id='discovery-api'>Discovery API</h1>
-<p>A Contact is a person your team has explicitly added to your database. It can be from prospected from GrowthGenius, manually added by your team, or created by the API.</p>
-<h1 id='prospector-api'>Prospector API</h1>
-<p>A Contact is a person your team has explicitly added to your database. It can be from prospected from GrowthGenius, manually added by your team, or created by the API.</p>
 <h1 id='contact-api'>Contact API</h1>
 <p>A Contact is a person your team has explicitly added to your database. It can be from prospected from GrowthGenius, manually added by your team, or created by the API.</p>
 <h2 id='create-a-contact'>Create a Contact</h2><div class="highlight"><pre class="highlight plaintext"><code>POST "https://api.growthgenius.com/integrations/v1/contacts"
